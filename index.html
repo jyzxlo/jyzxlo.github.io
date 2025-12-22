@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="zh-CN" theme="default"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="jyzxlo"><title>我不是小豆比</title><meta name="description" content="A simple and beautiful blog"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta id="site_data_static" data-url="/"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.webp"><link rel="stylesheet" href="/js_complied/bundle.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"><script src="/js_complied/bundle.js"></script><script>Anatolo.comment.setConfig({"valine":{"enable":false,"appid":null,"appkey":null,"notify":false,"verify":false,"avatar":"mm","placeholder":"hello, world"},"gitment":{"enable":false,"owner":"Your GitHub ID","repo":"Repo to store comments","client_id":"Your client ID","client_secret":"Your client secret"},"gitalk":{"enable":false,"owner":"Your GitHub ID","repo":"Repo to store comments","client_id":"Your client ID","client_secret":"Your client secret"},"duoshuo":null,"disqus":null,"gentie":null})</script><meta name="generator" content="Hexo 7.3.0"></head><body> <main-outlet><div class="page-top animated"><div class="nav"><li><a class="current" href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li><li><a target="_blank" rel="noopener" href="https://github.com/jyzxlo">关于</a></li><li><a target="_blank" rel="noopener" href="https://github.com/jyzxlo">友链</a></li></div><div class="information"><div class="nav_right_btn"><li class="btn-toggle-more"><i class="fa fa-ellipsis"></i></li><li class="btn-search"><a class="fa fa-search" onclick="Anatolo.search.openWindow();"></a></li><li class="btn-toggle-theme"><a class="far fa-sun" onclick="Anatolo.darkLightToggle();"></a></li></div><div class="avatar"><img src="/images/logo.webp"></div></div></div><div class="sidebar animated"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.webp" style="width:220px;" alt="favicon"><h3 title=""><a href="/">我不是小豆比</a></h3><div class="description"><p>A simple and beautiful blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/jyzxlo"><i class="fab fa-github"></i></a></li><li><a href="mailto:1342102726@qq.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"><span> </span><i class="fa fa-star"></i><span> jyzxlo</span></div><div class="by_farbox"><span>Powered by</span><a href="https://hexo.io/zh-cn/" target="_blank"> Hexo</a><span> &</span><a href="https://github.com/Lhcfl/hexo-theme-anatolo" target="_blank"> Anatolo</a></div><div class="beian"></div></div></div><div class="main animated fadeInDown"><div class="autopagerize_page_element"><div class="content"><div class="post animated"><div class="post-title"><h3><a href="/2025/12/22/%E5%9C%A8%E5%AE%89%E8%A3%85Node%E5%92%8C%E5%88%87%E6%8D%A2%E7%89%88%E6%9C%AC%E6%97%B6%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/">在安装Node和切换版本时所遇到的问题及解决方式</a></h3></div><div class="post-content"><div class="card"><p>npm切换目录和node切换版本 for Windows,还有pnpm的一些配置和原理</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-12-22</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Nodejs/" title="Nodejs">Nodejs </a><i class="fa fa-tag"></i><a class="tag" href="/tags/npm/" title="npm">npm </a><i class="fa fa-tag"></i><a class="tag" href="/tags/pnpm/" title="pnpm">pnpm </a><span>大约1017个字, 3分钟23秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/12/22/%E5%85%B3%E4%BA%8EC%E5%92%8CCpp%E7%BC%96%E8%AF%91%E9%93%BE%E6%B5%85%E6%98%BE%E7%9A%84%E7%90%86%E8%A7%A3/">关于C/C++编译链浅显的理解</a></h3></div><div class="post-content"><div class="card"><p><p>简单介绍一下ninja，make，cmake，clang，clangd，llvm之间的关系</p>
+<p>按照使用顺序：clangd-&gt;ninja-&gt;make-&gt;cmake-&gt;llvm&#x2F;clang</p>
+<p>这基本上就是大概的使用顺序；</p>
+<h2 id="clangd"><a href="#clangd" class="headerlink" title="clangd"></a>clangd</h2><p>首先<code>clangd</code>需要区别于VSCode中的<code>clangd插件</code>,clangd插件的作用是把你在编辑器里的动作翻译成指令发给 clangd.exe，再把 clangd.exe 的分析结果画在屏幕上（比如红色的波浪线），他们两个缺一不可。</p>
+<h2 id="ninja-make"><a href="#ninja-make" class="headerlink" title="ninja&#x2F;make"></a>ninja&#x2F;make</h2><p>这两个都是构建工具，可以直接用ninja替代make，但是ninja的配置文件和make不同，不能手写，只能用工具生成。</p>
+<h2 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h2><p>是用于生成构建构建工具的配置文件的工具，就是说是用来生成make&#x2F;ninja配置文件的工具，它的配置是CMakeList.txt，这个文件一般需要用户手写。</p>
+<h2 id="llvm-clang"><a href="#llvm-clang" class="headerlink" title="llvm&#x2F;clang"></a>llvm&#x2F;clang</h2><p>llvm是一整个编译器框架，提供中间表示（IR）、优化器、后端代码生成等模块，它里面包含整个编译链所需要的所有东西，比如它里面有clangd，clang，也有gdb用于调试</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>在VSCode使用clangd插件时，因为clangd调用clangd.exe时需要传递参数，一般情况下传递的是compile_commands.json。</p>
+<p><strong>有时可以正常编译，但是clangd一直报错找不到头文件</strong>经查阅资料可知当clangd找不到头文件时：</p>
+<ol>
+<li>首先根据<code>compile_commands.json</code>文件中分析，观察是否是有-I相关的目录，去寻找头文件（.clangd文件是对<em>compile_commands</em>文件的补充）。</li>
+<li>然后<code>compile_commands.json</code>查找失败时，就会根据已有的信息自己猜。</li>
+<li>在.clangd中添加的额为信息最重要的不是准确目录信息而是<code>--target=x86_64-w64-windows-gnu</code>，因为传入了这个信息clangd就可以知道这是一个 MinGW &#x2F; GNU ABI 的工具链，自动启用 MinGW toolchain 探测逻辑而不是像 MSVC 或“未知平台”那样瞎猜，此时就算传入错误的准确*include&#x2F;*路径，clangd也会自动根据已有信息自动猜测出正确的路径。</li>
+<li>比如我使用的<code>mingw-mstorsjo-llvm-ucrt</code>工具链是一个非官方构筑的工具链，如果使用官方的<code>clangd.exe</code>就必须告诉他我使用的是一个什么类型的工具链，它才能找到准确的头文件，但是我的这个工具链里面自带一个<code>clangd.exe</code>，作者在第三方构筑时就已经传入自己工具链的信息，那么我使用它的时候就无需传入类型信息，他可以自己正确寻找工具链头文件。</li>
+</ol>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-12-22</span><i class="fa fa-tag"></i><a class="tag" href="/tags/C-C/" title="-C/C++">-C/C++ </a><span>大约738个字, 2分钟27秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/12/22/Scoop%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Scoop包管理器的使用</a></h3></div><div class="post-content"><div class="card"><p><h2 id="Scoop根目录下的五个子目录"><a href="#Scoop根目录下的五个子目录" class="headerlink" title="Scoop根目录下的五个子目录"></a>Scoop根目录下的五个子目录</h2><h3 id="app目录"><a href="#app目录" class="headerlink" title="app目录"></a>app目录</h3><p>这个里面存储各个安装好的软件。</p>
+<h3 id="buckets目录"><a href="#buckets目录" class="headerlink" title="buckets目录"></a>buckets目录</h3><p>Buckets表示scoop的各个软件仓库，这个文件夹里面存储着本机已经启用的各个软件仓库。</p>
+<h3 id="cache目录"><a href="#cache目录" class="headerlink" title="cache目录"></a>cache目录</h3><p>这个目录里面存储着下载好的软件包，可以使用<code>scoop cache rm -a</code>全部删除</p>
+<h3 id="persist目录"><a href="#persist目录" class="headerlink" title="persist目录"></a>persist目录</h3><p>这个目录里面存储着各个软件的数据，相当于%APPDATA%目录下的每个软件的数据</p>
+<h3 id="shims目录"><a href="#shims目录" class="headerlink" title="shims目录"></a>shims目录</h3><p>用于起到环境变量的作用，<strong>并不是所有软件都使用shims，一些软件如nodejs还是会把scoop&#x2F;app目录下的对应文件夹放入Path中。scoop提倡那些有着复杂环境变量的软件不使用shims。</strong></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="下载失败如何删除"><a href="#下载失败如何删除" class="headerlink" title="下载失败如何删除"></a>下载失败如何删除</h3><p>首先使用<code>scoop status</code>检查是否有安装失败的项目，如果没有可以直接去五个目录寻找，手动删除。</p>
+<p>如果status中显示有失败的项目，先尝试使用<code>scoop uninstall [appname]</code>删除，若删除失败则手动删除</p>
+<h3 id="scoop的常用命令"><a href="#scoop的常用命令" class="headerlink" title="scoop的常用命令"></a>scoop的常用命令</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scoop update //更新 Scoop 和软件库</span><br><span class="line">scoop status //查看哪些软件有新版本</span><br><span class="line">scoop search &lt;软件名&gt; //搜索软件</span><br><span class="line">scoop update * //更新所有已安装软件</span><br><span class="line">scoop list //查看已安装列表</span><br><span class="line">scoop cleanup &lt;软件名&gt; //Scoop 在更新软件后会保留旧版本的二进制文件，建议清理</span><br><span class="line">scoop bucket known //查询官方已知的bucket仓库</span><br><span class="line">scoop bucket list //列出已经安装的仓库</span><br><span class="line">scoop config proxy <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">7890</span> //配置代理</span><br><span class="line">scoop config proxy //查看当前代理配置</span><br></pre></td></tr></table></figure>
+
+<h3 id="重装系统"><a href="#重装系统" class="headerlink" title="重装系统"></a>重装系统</h3><p>重装系统前，Scoop 官方推荐的导出&#x2F;导入功能</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">导出当前的软件列表： scoop export &gt; ~/Desktop/scoop-apps.json</span><br><span class="line">在新系统安装 Scoop 后导入： scoop import ~/Desktop/scoop-apps.json</span><br></pre></td></tr></table></figure>
+
+<p>如果没有备份，可以尝试使用<code>scoop reset *</code>命令补救</p>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-12-22</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Scoop/" title="Scoop">Scoop </a><span>大约506个字, 1分钟41秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/10/26/%E6%AF%8F%E6%AC%A1%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%A4%87%E4%BB%BD%E6%8C%87%E5%8D%97/">每次重装系统备份指南</a></h3></div><div class="post-content"><div class="card"><p>每次重装系统备份指南</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-10-26</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Windows/" title="Windows">Windows </a><span>大约122个字, 24秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/10/26/Markdown%E8%AF%AD%E6%B3%95%E7%AC%94%E8%AE%B0/">Markdown语法笔记</a></h3></div><div class="post-content"><div class="card"><p><h2 id="各级大标题"><a href="#各级大标题" class="headerlink" title="各级大标题"></a>各级大标题</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 表示顶级大标题，一篇文章中只能有一个</span></span><br><span class="line"><span class="section">## 表示二级大标题，可以有多个</span></span><br><span class="line"><span class="section">###... 多级大标题，都可以同时有多个表并列</span></span><br><span class="line">但是大标题只能按顺序从大到小用，不能打乱顺序。</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码块符号"><a href="#代码块符号" class="headerlink" title="代码块符号"></a>代码块符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`name`</span> 会使文字下面加一个白底，衬托为代码块。</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码区符号"><a href="#代码区符号" class="headerlink" title="代码区符号"></a>代码区符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```name</span></span><br><span class="line"><span class="code">这里面写东西，后面的name表示写的什么语言以启用代码高亮。</span></span><br><span class="line"><span class="code">``</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="强调符号"><a href="#强调符号" class="headerlink" title="强调符号"></a>强调符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 表示斜体 *</span><br><span class="line">** 表示粗体 **</span><br><span class="line"><span class="strong">*** 表示粗斜体 **</span>*</span><br><span class="line">注意星号和文字之间没有空格</span><br></pre></td></tr></table></figure>
+
+<h2 id="超链接符号"><a href="#超链接符号" class="headerlink" title="超链接符号"></a>超链接符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">百度</span>](<span class="link">www.baidu.com</span>)</span><br></pre></td></tr></table></figure>
+
+<p>比如：<a href="www.baidu.com">百度</a></p>
+<h2 id="中间横划线符号"><a href="#中间横划线符号" class="headerlink" title="中间横划线符号"></a>中间横划线符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~name~~ 效果如下</span><br></pre></td></tr></table></figure>
+
+<p><del>name</del></p>
+<h2 id="引用符号"><a href="#引用符号" class="headerlink" title="引用符号"></a>引用符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 效果如下</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>效果是这样</p>
+</blockquote>
+<h2 id="分割线符号"><a href="#分割线符号" class="headerlink" title="分割线符号"></a>分割线符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**<span class="emphasis">*或者---或者___</span></span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下</p>
+<hr>
+<h2 id="表格符号"><a href="#表格符号" class="headerlink" title="表格符号"></a>表格符号</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 列标题一 | 列标题二 | 列标题三 |</span><br><span class="line">| -------- | -------- | -------- |可以在这里设置对齐方式</span><br><span class="line">| 第一行数据 | 单元格 A | 单元格 B |</span><br><span class="line">| 第二行数据 | 单元格 C | 单元格 D |</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>对齐方式</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>左对齐</td>
+<td><code>:--</code></td>
+</tr>
+<tr>
+<td>右对齐</td>
+<td><code>--:</code></td>
+</tr>
+<tr>
+<td>中间对齐</td>
+<td><code>:--:</code></td>
+</tr>
+</tbody></table>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-10-26</span><i class="fa fa-tag"></i><a class="tag" href="/tags/MarkDown/" title="-MarkDown">-MarkDown </a><span>大约288个字, 57秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/01/14/Nekobox%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">Nekobox使用指南</a></h3></div><div class="post-content"><div class="card"><p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><blockquote>
+<p>电脑Windows端和手机端Android下载地址:<code>https://zxl666.lanzouo.com/b0fp2ulmb</code> 密码:2qth</p>
+</blockquote>
+<p>电脑下载这个</p>
+<p><img src="/../img/4.png" alt="img"></p>
+<p>手机优先下载图片中第一个apk，装不上再下第二个</p>
+<p><img src="/../img/3.png" alt="img"></p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><h3 id="电脑端"><a href="#电脑端" class="headerlink" title="电脑端"></a>电脑端</h3><ol>
+<li>下载完后解压到某个位置</li>
+<li>进入解压好文件夹,双击打开的如下文件</li>
+</ol>
+<blockquote>
+<p>这个exe以后可能总是用,可以把他创建一个快捷方式复制到桌面</p>
+</blockquote>
+<p><img src="/../img/5.png" alt="img"></p>
+<ol start="3">
+<li><strong>复制魔法链接后</strong>在托盘中右键图标,从剪贴板添加</li>
+</ol>
+<p><img src="/../img/6.png" alt="img"></p>
+<ol start="4">
+<li>添加完毕后在主界面点击右上角URL测试,检测服务器是否可用</li>
+</ol>
+<p><img src="/../img/7.png" alt="img"></p>
+<ol start="5">
+<li>在托盘中右键图标,选择当前服务器,选择节点</li>
+</ol>
+<blockquote>
+<p>优先选择测试结果延迟最小的节点</p>
+</blockquote>
+<p><img src="/../img/8.png" alt="img"></p>
+<ol start="6">
+<li>在托盘中右键图标,选择系统代理,启用系统代理</li>
+</ol>
+<p><img src="/../img/9.png" alt="img"></p>
+<ol start="7">
+<li><p>在浏览器中访问<code>google.com</code>,此时应该可以打开了</p>
+</li>
+<li><p><strong>每次使用完记得一定要记得关闭系统代理(第六步),否则下次电脑开关机后可能没网</strong></p>
+</li>
+</ol>
+<blockquote>
+<p>如果电脑开关机后没网,可以再次打开软件,然后开启系统代理然后再关闭系统代理,这样重复一下就有网了.</p>
+</blockquote>
+<ol start="9">
+<li>每次不想用了或者访问国内某些网站慢,也可以先关闭系统代理(第六步),其实关闭系统代理,一定意义上就相当于完全关了.</li>
+</ol>
+<h3 id="手机端"><a href="#手机端" class="headerlink" title="手机端"></a>手机端</h3><p>安装完毕后,首先复制魔法链接,然后打开软件,右上角加号,从剪切板导入.</p>
+<blockquote>
+<p>右上角三个点,连接测试,选择<strong>URL测试</strong>,可以测试节点可用性和延迟情况.</p>
+</blockquote>
+<p>之后选择节点,点击小飞机,起飞~</p>
+<p><img src="/../img/1.gif" alt="gif"></p>
+</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-01-14</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Neko/" title="Neko">Neko </a><span>大约440个字, 1分钟28秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/01/09/vscode%E7%94%9F%E4%BA%A7%E5%8A%9B%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">vscode生产力搭建指南</a></h3></div><div class="post-content"><div class="card"><p>搭建vscode环境时备忘录，可以重装系统时进行参考</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-01-09</span><i class="fa fa-tag"></i><a class="tag" href="/tags/vscode/" title="vscode">vscode </a><span>大约412个字, 1分钟22秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/01/01/archlinux%E4%BD%BF%E7%94%A8%E6%9D%82%E8%B0%88/">archlinux使用杂谈</a></h3></div><div class="post-content"><div class="card"><p>使用arch过程中遇到的一些小问题以及解决方法</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-01-01</span><i class="fa fa-tag"></i><a class="tag" href="/tags/linux/" title="linux">linux </a><span>大约21个字, 4秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2025/01/01/%E6%88%91%E7%9A%84dwm%E6%8A%98%E8%85%BE%E6%8C%87%E5%8D%97/">我的dwm折腾指南</a></h3></div><div class="post-content"><div class="card"><p>dwm配置备份</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2025-01-01</span><i class="fa fa-tag"></i><a class="tag" href="/tags/dwm/" title="dwm">dwm </a><span>大约487个字, 1分钟37秒读完</span></div></div></div></div><div class="post animated"><div class="post-title"><h3><a href="/2024/12/31/chmod%E5%92%8Cchown%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">Chmod和Chown使用指南</a></h3></div><div class="post-content"><div class="card"><p>chmod和chown有什么区别</p></div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2024-12-31</span><i class="fa fa-tag"></i><a class="tag" href="/tags/linux/" title="linux">linux </a><span>大约606个字, 2分钟1秒读完</span></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/page/2/">下一页</a></li></ul></div></div></div></div></main-outlet><script>(async function(){ if (Anatolo.search == null) await Anatolo.getMsg("search-init"); Anatolo.search.config = {translation:{posts:"文章",pages:"页面",categories:"分类",tags:"标签",untitled:"(无标题)",} }; })()</script><div class="searchbox ins-search modal-cover"><div class="searchbox-container ins-search-container modal-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="Anatolo.search.closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div><button class="float-button hide" id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" title="回到顶部"><i class="fa fa-angle-up"></i></button><div class="modal-cover" id="success-indicator"><div class="modal-container indicator"><i class="fa fa-check"></i></div></div></body></html>
